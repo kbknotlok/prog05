@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body onload="loadDoc()";>
+
+<div id="demo">
+</div>
+
+<script>
+function getID() {
+	id = window.location.search.substring(1);
+	id = id.split("=");
+	return id[1];
+}
+function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("demo").innerHTML =
+      this.responseText;
+    }
+  };
+  xhttp.open("GET", "http://csis.svsu.edu/~kbkovac/cis355/prog05/read.php?id=" + getID(), true);
+  xhttp.send();
+}
+</script>
+
+</body>
+</html>
